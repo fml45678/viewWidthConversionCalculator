@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10%;
+      row-gap: 5vw;
+    }
+    .header {
+      font-size: 5vw;
+      color: green;
+      font-family: "Times New Roman", Times, serif;
+      text-transform: uppercase;
+    }
+    input {
+      width: 15vw;
+      font-size: 37px;
+    }
+    .buttonContainer {
+      display: flex;
+      column-gap: 2vw;
+    }
+    .buttons {
+      width: 16vw;
+      height: 10vw;
+    }
+    h1 {
+      font-size: 60px;
+    }
+  </style>
+
+  <body>
+    <span class="header">PX to VW Converter</span>
+    <input type="number" id="input" />
+    <div class="buttonContainer">
+      <button onclick="phoneValue()" class="buttons">
+        phone <br />
+        (shift)
+      </button>
+      <button onclick="ipadValue()" class="buttons">
+        ipad <br />
+        (Space)
+      </button>
+      <button onclick="webValue()" class="buttons">
+        web <br />
+        (enter)
+      </button>
+    </div>
+    <h1 id="answer"></h1>
+
+    <script>
+      const phoneValue = () => {
+        let x = document.getElementById("input").value;
+        const phone = x / 3.9;
+        document.getElementById("answer").innerHTML = phone.toFixed(3) + "vw";
+        console.log(x, "/ 3.9 =", phone.toFixed(3));
+        navigator.clipboard.writeText(phone.toFixed(3));
+      };
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Shift") {
+          phoneValue();
+          document.getElementById("input").value = "";
+        }
+      });
+
+      const ipadValue = () => {
+        let x = document.getElementById("input").value;
+        const ipad = x / 7.68;
+        document.getElementById("answer").innerHTML = ipad.toFixed(3) + "vw";
+        console.log(x, "/ 7.68 =", ipad.toFixed(3));
+        navigator.clipboard.writeText(ipad.toFixed(3));
+      };
+      window.addEventListener("keydown", (e) => {
+        if (e.key === " ") {
+          ipadValue();
+          document.getElementById("input").value = "";
+        }
+      });
+      const webValue = () => {
+        let x = document.getElementById("input").value;
+        const web = x / 19.2;
+        document.getElementById("answer").innerHTML = web.toFixed(3) + "vw";
+        console.log(x, "/ 19.2 =", web.toFixed(3));
+        navigator.clipboard.writeText(web.toFixed(3));
+      };
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          webValue();
+          document.getElementById("input").value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
